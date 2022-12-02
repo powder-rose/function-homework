@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="numbers">
+        <input class="numbers__input" placeholder="Введите число" type="text">
+        <button class="numbers__btn_get">Еще одно число</button>
+        <button class="numbers__btn_ready">Готово</button>
+    </div>
+    <div class="result">
+    </div>
+
+
+
+    <script>
+        const numbersInput = document.querySelector('.numbers__input')
+        const getBtn = document.querySelector('.numbers__btn_get')
+        const readyBtn = document.querySelector('.numbers__btn_ready')
+        const result = document.querySelector('.result')
+
+        let arr = []
+
+        const getNumbers = () => {
+            let num = Number(numbersInput.value)
+
+            if (num) {
+                arr.push(num)
+                arr.sort()
+
+            } else {
+                result.innerHTML = 'Неверное значение'
+            }
+            numbersInput.value = ''
+            result.innerHTML = arr
+        }
+
+        const sumNumbers = () => {
+            let sum = 0
+            for (i = 0; i < arr.length; i++) {
+                sum = sum + arr[i]
+            }
+            result.innerHTML = sum
+
+        }
+
+
+        getBtn.addEventListener('click', getNumbers)
+        readyBtn.addEventListener('click', sumNumbers)
+
+    </script>
+</body>
+
+</html>
